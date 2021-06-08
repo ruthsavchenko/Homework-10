@@ -3,7 +3,7 @@ $(document).ready(() => {
         console.log(countries);
         let htmlResult = '';
         for(let country of countries) {
-            htmlResult += `<tr><td>${country.response.name}</td></tr>`;
+            htmlResult += `<tr><td>${country.name}</td></tr>`;
         }
         $('table#countries tbody').html(htmlResult);
     }
@@ -17,8 +17,8 @@ $(document).ready(() => {
             }
         }).then(data => {
             console.log(data);
-            renderCountries(data.map(country => {
-                return {name: country.response.name};
+            renderCountries(data.response.map(country => {
+                return {name: country.name};
             }))
         })
     }
