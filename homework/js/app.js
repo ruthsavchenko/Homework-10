@@ -2,10 +2,19 @@ $(document).ready(() => {
     const renderCountries = countries => {
         console.log(countries);
         let htmlResult = '';
+        let selectStr = '<option value="">Not selected</option>';
         for(let country of countries) {
             htmlResult += `<tr><td>${country.name}</td></tr>`;
+            selectStr += `<option value="${country.name}">${country.name}</option>`
         }
         $('table#countries tbody').html(htmlResult);
+
+        document.querySelector('table > tbody').innerHTML = htmlResult;
+        let select = document.getElementsByClassName('countries-select');
+        console.log(select, selectStr);
+        if(select & select.length) {
+            select[0].innerHTML = selectStr;
+        }
     }
     const getData = () => {
         $.ajax({
